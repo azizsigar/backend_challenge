@@ -73,6 +73,7 @@
 
         if (messages.length > 0) {
           e.preventDefault();
+          errorElement.classList.add("text-danger");
           errorElement.innerText = messages.join(", ");
         }
       });
