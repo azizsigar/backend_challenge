@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./layout/head.ejs') %>
+  <body>
+    <!-- Navbar -->
+    <%- include('./layout/header.ejs') %>
+
+    <div class="container">
+      <h3 class="display-5">Edit Post</h3>
+
+      <form action="/feed/edit/<%= feed.id %>" method="post" id="form">
+        <label for="name">Name: </label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          class="form-control mb-3"
+          value="<%= feed.name %>"
+          required
+        />
+
+        <!-- Validate Name Length -->
+        <% if(err){ %>
+        <p class="text-danger mt-2"><%= err['name'] %></p>
+        <% } %>
+        <!-- End Empty Name Validation -->
+
+        <label for="message" class="mb-2">Message: </label>
+        <textarea
+          class="form-control"
+          name="message"
+          id="message"
+          style="height: 135px"
+          required
+        >
+<%= feed.message %></textarea
+        >
+        <!-- Validate Message Length -->
+        <% if(err){ %>
+        <p class="text-danger mt-2"><%= err['message'] %></p>
+        <% } %>
+        <!-- End Message Validation -->
+
+        <a href="/feed/<%= feed.id %>">
+          <button class="btn btn-primary mt-2" type="submit">Submit</button>
+        </a>
+      </form>
+      <!-- Show errors -->
+      <div id="error"></div>
+    </div>
+
+    <!-- script (Error Handling In the EJS Edit didn't work, I will do on script: ) -->
+    <script>
+      const name = document.getElementById("name");
+      const message = document.getElementById("message");
+      const form = document.getElementById("form");
+      const errorElement = document.getElementById("error");
+
+      form.addEventListener("submit", (e) => {
+        let messages = [];
+
+        if (name.value.trim() === "") {
+          messages.push("Name is required");
+        }
+
+        if (name.value.length > 15) {
+          messages.push("Maximum name is 15 characters");
+        }
+
+        if (message.value.length > 40) {
+          messages.push("Maximum text is 40 characters");
+        }
+
+        if (messages.length > 0) {
+          e.preventDefault();
+          errorElement.innerText = messages.join(", ");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./layout/head.ejs') %>
+  <body>
+    <%- include('./layout/header.ejs') %>
+    <main>
+      <div class="container">
+        <h2><%= feed.name %></h2>
+        <p><%= feed.message %></p>
+        <small class="text-end mb-2 text-muted"
+          >Posted on <%= feed.date %></small
+        >
+        <!-- Edit -->
+        <div class="d-flex align-items-center gap-2">
+          <form action="/feed/edit/<%= feed._id %>">
+            <button type="submit" class="btn btn-success mt-2">
+              <a class="nav-link" href="/feed/edit/<%= feed._id %>"
+                >Edit Post</a
+              >
+            </button>
+          </form>
+          <!-- Delete -->
+          <form action="/feed/delete/<%= feed.id%>" method="post">
+            <button type="submit" class="btn btn-danger mt-2">Delete</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
