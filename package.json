@@ -1,7 +1,7 @@
 {
   "name": "backend_challenge",
   "version": "1.0.0",
-  "description": "BackEnd Challenge from Matrix Master Bootcamp",
+  "description": "obi",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
@@ -16,5 +16,6 @@
     "moment": "^2.29.4",
     "mongoose": "^8.0.2",
     "nodemon": "^3.0.1"
-  }
+  },
+  "keywords": []
 }

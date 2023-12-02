@@ -6,13 +6,13 @@ const feedSchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, "Please enter your name!"],
+      required: [true, "Enter your name!"],
       trim: true,
       maxLength: [15, "Name must be less than 15 characters"],
     },
     message: {
       type: String,
-      required: [true, "Please enter some message!"],
+      required: [true, "Enter message!"],
       trim: true,
       maxLength: [40, "Message must be less than 40 characters"],
     },
